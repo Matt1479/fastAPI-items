@@ -1,4 +1,4 @@
-# FastAPI-Items
+# fastAPI-items
 
 A simple REST API written in Python and FastAPI which supports CRUD operations on items.
 
