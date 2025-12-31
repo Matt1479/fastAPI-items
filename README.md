@@ -11,8 +11,8 @@ The goal of this project was to get some experience in building APIs with FastAP
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/Matt1479/FastAPI-Items
-cd FastAPI-Items
+git clone https://github.com/Matt1479/fastAPI-items
+cd fastAPI-items
 ```
 
 ### Create and Activate Virtual Environment
