@@ -13,6 +13,14 @@ async def root():
     return {"message": "hello, world!"}
 
 
+@app.get("/items/{item_id}")
+async def read_item(item_id: int):
+    for item in ITEMS:
+        if item.id == item_id:
+            return {"item": item}
+    return {"error": "not found"}
+
+
 @app.get("/items/")
 async def read_items(skip: int = 0, limit: int = 10):
     return {"items": ITEMS[skip : skip + limit]}
