@@ -43,3 +43,11 @@ async def update_item(item_id: int, item: Item):
             ITEMS[i].id = item_id
             return ITEMS[i]
     return {"error": "not found"}
+
+
+@app.delete("/items/delete/{item_id}")
+async def delete_item(item_id: int):
+    for i, item in enumerate(ITEMS):
+        if item.id == item_id:
+            return ITEMS.pop(i)
+    return {"error": "not found"}
