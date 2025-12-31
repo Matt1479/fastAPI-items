@@ -16,20 +16,20 @@ async def root():
 @app.post("/items/")
 async def create_item(item: Item):
     item.id = (
-        max([item.id for item in ITEMS if item.id is not None]) + 1 if ITEMS else 1
+        max([_item.id for _item in ITEMS if _item.id is not None]) + 1 if ITEMS else 1
     )
     ITEMS.append(item)
-    return {"message": f"created item of id {item.id}"}
+    return item
 
 
 @app.get("/items/{item_id}")
 async def read_item(item_id: int):
     for item in ITEMS:
         if item.id == item_id:
-            return {"item": item}
+            return item
     return {"error": "not found"}
 
 
 @app.get("/items/")
 async def read_items(skip: int = 0, limit: int = 10):
-    return {"items": ITEMS[skip : skip + limit]}
+    return ITEMS[skip : skip + limit]
