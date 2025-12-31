@@ -13,6 +13,15 @@ async def root():
     return {"message": "hello, world!"}
 
 
+@app.post("/items/")
+async def create_item(item: Item):
+    item.id = (
+        max([item.id for item in ITEMS if item.id is not None]) + 1 if ITEMS else 1
+    )
+    ITEMS.append(item)
+    return {"message": f"created item of id {item.id}"}
+
+
 @app.get("/items/{item_id}")
 async def read_item(item_id: int):
     for item in ITEMS:
